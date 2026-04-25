@@ -1,0 +1,5 @@
+/target
+.DS_Store
+.the_sieve_temp.*
+*.swp
+.claude/settings.local.json

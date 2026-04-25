@@ -1,0 +1,20 @@
+[package]
+name = "the-sieve"
+version = "0.1.0"
+edition = "2021"
+description = "A CLI tool to convert TTRPG markdown to half-letter PDFs for booklet printing"
+license = "MIT"
+
+[dependencies]
+pulldown-cmark = "0.10"
+clap = { version = "4", features = ["derive"] }
+thiserror = "1"
+anyhow = "1"
+typst = "0.14"
+typst-pdf = "0.14"
+comemo = "0.4"
+ecow = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = true

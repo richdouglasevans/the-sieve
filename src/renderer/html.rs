@@ -3,6 +3,7 @@ use std::process::Command;
 
 use crate::ast::{Alignment, Document, Element, Image, Inline, ListItem, Table};
 use crate::error::{SieveError, Result};
+use crate::licenses::{self, LicenseFragment};
 
 /// Render a document AST to HTML
 pub fn render_to_html(document: &Document, _base_path: &Path) -> String {
@@ -30,6 +31,46 @@ pub fn render_to_html(document: &Document, _base_path: &Path) -> String {
             }
             Element::PageBreak => {
                 output.push_str("<div class=\"page-break\"></div>\n");
+            }
+            Element::License { kind, info } => {
+                // Close the current column flow so `break-before: page` on the
+                // license wrapper applies cleanly (CSS multicolumn + column-span
+                // interacts badly with page-break properties in WeasyPrint).
+                let column_class = if in_single_column { "single-column" } else { "two-column" };
+                output.push_str("</div>\n");
+                output.push_str("<section class=\"license-section\">\n");
+                output.push_str(&format!(
+                    "<div class=\"license-title\">{}</div>\n",
+                    escape_html(licenses::title(*kind))
+                ));
+                if let Some(attribution) = &info.attribution {
+                    output.push_str(&format!(
+                        "<p class=\"license-attribution\">{} Licensed under {}. To view a copy of this license, visit {}.</p>\n",
+                        escape_html(attribution),
+                        escape_html(licenses::short_name(*kind)),
+                        escape_html(licenses::url(*kind)),
+                    ));
+                }
+                if let Some(changes) = &info.changes {
+                    output.push_str(&format!(
+                        "<p class=\"license-changes\">Changes from original: {}</p>\n",
+                        escape_html(changes)
+                    ));
+                }
+                output.push_str("<div class=\"license\">\n");
+                for frag in licenses::fragments(*kind) {
+                    match frag {
+                        LicenseFragment::Heading2(t) => output
+                            .push_str(&format!("<h2>{}</h2>\n", escape_html(&t))),
+                        LicenseFragment::Heading3(t) => output
+                            .push_str(&format!("<h3>{}</h3>\n", escape_html(&t))),
+                        LicenseFragment::Paragraph(t) => output
+                            .push_str(&format!("<p>{}</p>\n", escape_html(&t))),
+                    }
+                }
+                output.push_str("</div>\n");
+                output.push_str("</section>\n");
+                output.push_str(&format!("<div class=\"content {}\">\n", column_class));
             }
             Element::Heading { level: 1, text } => {
                 // H1 spans all columns
@@ -219,6 +260,58 @@ hr {
 .page-break {
   break-after: page;
 }
+
+/* License page */
+.license-section {
+  break-before: page;
+  page-break-before: always;
+}
+
+.license-title {
+  text-align: center;
+  font-size: 13pt;
+  font-weight: bold;
+  margin: 0.5em 0 0.5em 0;
+  page-break-after: avoid;
+}
+
+.license-attribution {
+  font-size: 9pt;
+  font-weight: bold;
+  margin: 0.4em 0;
+}
+
+.license-changes {
+  font-size: 9pt;
+  font-style: italic;
+  margin: 0.3em 0 0.6em 0;
+}
+
+.license {
+  font-size: 6.5pt;
+  line-height: 1.3;
+  column-count: 2;
+  column-gap: 11pt;
+}
+
+.license p {
+  font-size: 6.5pt;
+  margin: 0 0 0.4em 0;
+}
+
+.license h2 {
+  font-size: 8pt;
+  font-weight: bold;
+  margin: 0.6em 0 0.2em 0;
+  page-break-after: avoid;
+}
+
+.license h3 {
+  font-size: 7pt;
+  font-weight: bold;
+  margin: 0.4em 0 0.2em 0;
+  page-break-after: avoid;
+}
 </style>
 </head>
 "##.to_string()
@@ -251,6 +344,7 @@ fn render_element(element: &Element) -> String {
         Element::ThematicBreak => "<hr>\n".to_string(),
 
         Element::PageBreak => "<div class=\"page-break\"></div>\n".to_string(),
+        Element::License { .. } => String::new(), // handled in render_to_html main loop
 
         Element::ColumnLayout(_) => String::new(), // Handled in main loop
 

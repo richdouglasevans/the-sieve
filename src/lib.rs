@@ -46,6 +46,7 @@
 pub mod ast;
 pub mod cli;
 pub mod error;
+pub mod licenses;
 pub mod parser;
 pub mod renderer;
 

@@ -38,7 +38,20 @@ pub enum Element {
     BoxedText(String),
     Image(Image),
     Table(Table),
+    License { kind: LicenseKind, info: LicenseInfo },
     Raw(String),
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LicenseKind {
+    Ogl1_0a,
+    CcBySa4_0,
+}
+
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct LicenseInfo {
+    pub attribution: Option<String>,
+    pub changes: Option<String>,
 }
 
 #[derive(Debug, Clone)]

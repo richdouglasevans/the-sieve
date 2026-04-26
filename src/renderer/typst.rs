@@ -12,6 +12,7 @@ use typst_pdf::PdfOptions;
 
 use crate::ast::{Alignment, Document, Element, Image, Inline, ListItem, Table};
 use crate::error::{SieveError, Result};
+use crate::licenses::{self, LicenseFragment};
 
 /// Render a document AST to Typst markup
 pub fn render_to_typst(document: &Document, base_path: &Path) -> String {
@@ -46,6 +47,48 @@ pub fn render_to_typst(document: &Document, base_path: &Path) -> String {
                 } else {
                     output.push_str("#pagebreak()\n");
                 }
+            }
+            Element::License { kind, info } => {
+                if in_columns {
+                    output.push_str(end_cols);
+                }
+                output.push_str("#pagebreak()\n");
+                output.push_str(&format!(
+                    "#align(center)[#text(size: 13pt, weight: \"bold\")[{}]]\n",
+                    escape_typst(licenses::title(*kind))
+                ));
+                if let Some(attribution) = &info.attribution {
+                    output.push_str(&format!(
+                        "#text(size: 9pt, weight: \"bold\")[{} Licensed under {}. To view a copy of this license, visit {}.]\n\n",
+                        escape_typst(attribution),
+                        escape_typst(licenses::short_name(*kind)),
+                        escape_typst(licenses::url(*kind)),
+                    ));
+                }
+                if let Some(changes) = &info.changes {
+                    output.push_str(&format!(
+                        "#text(size: 9pt, style: \"italic\")[Changes from original: {}]\n\n",
+                        escape_typst(changes)
+                    ));
+                }
+                output.push_str(start_cols);
+                output.push_str("#text(size: 6.5pt)[\n");
+                for frag in licenses::fragments(*kind) {
+                    match frag {
+                        LicenseFragment::Heading2(t) => output.push_str(&format!(
+                            "#text(size: 8pt, weight: \"bold\")[{}]\n\n",
+                            escape_typst(&t)
+                        )),
+                        LicenseFragment::Heading3(t) => output.push_str(&format!(
+                            "#text(size: 7pt, weight: \"bold\")[{}]\n\n",
+                            escape_typst(&t)
+                        )),
+                        LicenseFragment::Paragraph(t) => output
+                            .push_str(&format!("{}\n\n", escape_typst(&t))),
+                    }
+                }
+                output.push_str("]\n");
+                in_columns = true;
             }
             Element::Heading { level: 1, text } => {
                 // H1: close columns, render centered, reopen
@@ -190,6 +233,11 @@ fn render_element(element: &Element, base_path: &Path) -> String {
         Element::ThematicBreak => "#line(length: 100%)\n".to_string(),
 
         Element::PageBreak => {
+            // Handled in render_to_typst main loop
+            String::new()
+        }
+
+        Element::License { .. } => {
             // Handled in render_to_typst main loop
             String::new()
         }

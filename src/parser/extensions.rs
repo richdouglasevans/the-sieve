@@ -1,4 +1,4 @@
-use crate::ast::Image;
+use crate::ast::{Image, LicenseInfo, LicenseKind};
 use std::path::PathBuf;
 
 /// Detects and parses custom TTRPG extensions in markdown
@@ -7,6 +7,39 @@ use std::path::PathBuf;
 pub fn is_page_break(html: &str) -> bool {
     let trimmed = html.trim();
     trimmed == "<!-- pagebreak -->" || trimmed == "<!--pagebreak-->"
+}
+
+/// Check if an HTML comment is a license directive (e.g. `<!-- license: ogl-1.0a -->`
+/// or `<!-- license: cc-by-sa-4.0 attribution="X" changes="Y" -->`).
+pub fn parse_license(html: &str) -> Option<(LicenseKind, LicenseInfo)> {
+    let inner = html
+        .trim()
+        .strip_prefix("<!--")?
+        .strip_suffix("-->")?
+        .trim();
+    let value = inner.strip_prefix("license:")?.trim();
+    let (kind_str, rest) = value
+        .split_once(|c: char| c.is_ascii_whitespace())
+        .unwrap_or((value, ""));
+    let kind = match kind_str.to_lowercase().as_str() {
+        "ogl-1.0a" | "ogl1.0a" | "ogl" => LicenseKind::Ogl1_0a,
+        "cc-by-sa-4.0" | "ccbysa4.0" | "cc-by-sa" => LicenseKind::CcBySa4_0,
+        _ => return None,
+    };
+    let info = LicenseInfo {
+        attribution: extract_quoted(rest, "attribution"),
+        changes: extract_quoted(rest, "changes"),
+    };
+    Some((kind, info))
+}
+
+/// Extract a `key="value"` pair from a directive tail; quotes do not nest or escape.
+fn extract_quoted(s: &str, key: &str) -> Option<String> {
+    let needle = format!("{}=\"", key);
+    let start = s.find(&needle)? + needle.len();
+    let rest = &s[start..];
+    let end = rest.find('"')?;
+    Some(rest[..end].to_string())
 }
 
 /// Check if an HTML comment is a column layout directive
@@ -96,6 +129,44 @@ mod tests {
         assert_eq!(parse_column_layout("<!-- 1-column -->"), Some(1));
         assert_eq!(parse_column_layout("<!-- 2-column -->"), Some(2));
         assert_eq!(parse_column_layout("<!-- other -->"), None);
+    }
+
+    #[test]
+    fn test_license_directive_detection() {
+        let bare = LicenseInfo::default();
+        assert_eq!(
+            parse_license("<!-- license: ogl-1.0a -->"),
+            Some((LicenseKind::Ogl1_0a, bare.clone()))
+        );
+        assert_eq!(
+            parse_license("<!--license:ogl-->"),
+            Some((LicenseKind::Ogl1_0a, bare.clone()))
+        );
+        assert_eq!(
+            parse_license("<!-- license: cc-by-sa-4.0 -->"),
+            Some((LicenseKind::CcBySa4_0, bare.clone()))
+        );
+        assert_eq!(parse_license("<!-- pagebreak -->"), None);
+        assert_eq!(parse_license("<!-- license: unknown -->"), None);
+    }
+
+    #[test]
+    fn test_license_attribution_parsing() {
+        let parsed =
+            parse_license(r#"<!-- license: cc-by-sa-4.0 attribution="X by Y" changes="reformatted" -->"#)
+                .unwrap();
+        assert_eq!(parsed.0, LicenseKind::CcBySa4_0);
+        assert_eq!(parsed.1.attribution.as_deref(), Some("X by Y"));
+        assert_eq!(parsed.1.changes.as_deref(), Some("reformatted"));
+    }
+
+    #[test]
+    fn test_license_partial_attribution() {
+        let parsed =
+            parse_license(r#"<!-- license: cc-by-sa-4.0 attribution="Just attribution" -->"#)
+                .unwrap();
+        assert_eq!(parsed.1.attribution.as_deref(), Some("Just attribution"));
+        assert_eq!(parsed.1.changes, None);
     }
 
     #[test]

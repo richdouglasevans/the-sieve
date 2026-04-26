@@ -4,7 +4,7 @@ use crate::ast::{Alignment, Document, Element, Inline, ListItem, Table};
 use crate::error::Result;
 use crate::parser::extensions::{
     detect_code_block_type, is_page_break, parse_boxed_text, parse_column_layout,
-    parse_image_attributes, CodeBlockType,
+    parse_image_attributes, parse_license, CodeBlockType,
 };
 
 /// Parse markdown content into our intermediate AST
@@ -168,6 +168,8 @@ fn process_event(event: Event, document: &mut Document, state: &mut ParserState)
                 document.push(Element::PageBreak);
             } else if let Some(columns) = parse_column_layout(&html) {
                 document.push(Element::ColumnLayout(columns));
+            } else if let Some((kind, info)) = parse_license(&html) {
+                document.push(Element::License { kind, info });
             } else {
                 document.push(Element::Raw(html.to_string()));
             }

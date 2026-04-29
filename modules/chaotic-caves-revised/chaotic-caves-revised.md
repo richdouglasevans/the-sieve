@@ -1,15 +1,4 @@
-# The Caves
-
-The GM has to decide where the caves are on the map. They might even be
-scattered about the countryside in different places. As drawn, the cave map is
-wooded with occasional clearings, but the GM may of course change that.
-
-The monsters are trying to avoid leaving tracks and trails so as to keep their
-lairs undetected. Wild animals are few in the general area around the caves;
-monsters are hunting them pretty hard. As the characters get close to an
-entrance, they will note it or the guards (if any) on duty. Perhaps smoke from
-someone cooking a meal in the open is seen rising above the treetops, or is
-smelled by the PCs in the breeze.
+# Chaotic Caves Revised
 
 An adventuring party blundering around outside the caves, making a lot of
 noise, should alert the denizens to their presence; the monsters will surely
@@ -52,8 +41,9 @@ tricks, and nastiness. There is a chance (a 1 or 2 on 1d6) per hour (6 turns)
 that the player characters will encounter 1d6 orcs moving about.
 
 ```statblock
-**1d6 Wandering Orcs:** AC 14, HD 1, #At 1 longsword, Dam 1d8, Mv 30', Sv F1,
+**1d6 Wandering Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1,
 ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 1. Entrance
@@ -63,7 +53,8 @@ spears. Others will be inside the first chamber, which is their usual bunk
 room. Each has 1d6 sp.
 
 ```statblock
-**6 Orcs:** AC 14, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**6 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 2. Empty Room
@@ -79,7 +70,8 @@ the walls. In the back are sacks of food stuffs (potatoes, etc.) and hanging
 meat (12 – 72 pounds each of veggies and meat).
 
 ```statblock
-**8 Orcs:** AC 14, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**8 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 4. Wolf Pen
@@ -95,7 +87,7 @@ in #5 below hear and investigate as well. The soft earthen floor of the room is
 littered with wooden bowls full of water, bones, and offal, but nothing else.
 
 ```statblock
-**3 Wolves:** AC 13, HD 2, #At 1 bite, Dam 1d6, Mv 60', Sv F2, ML 8, XP 75 ea.
+**3 Wolves:** AC 13, HD 2, ATK +2 -> 1d6 (bite), MV 60, SV F2, ML 8, XP 75 ea.
 ```
 
 ### 5. Door to Jail
@@ -107,13 +99,15 @@ various simple wooden or stone interrogation devices fill the room. The warden
 has 1d6 gp and the other two orcs 1d6 sp.
 
 ```statblock
-**Orc Warden:** AC 14, HD 2, #At 1 longsword, Dam 1d8+1 for strength, Mv 30',
-Sv F2, ML 8, XP 75
+**Orc Warden:** AC 14, HD 2, ATK +3 -> 1d8+1 (longsword), MV 30, SV F2, ML 8,
+XP 75
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ```statblock
-**2 Orcs:** AC 14, HD 1, #At 1 longsword, Dam 1d8, Mv 30', Sv F1, ML 8, XP 25
+**2 Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1, ML 8, XP 25
 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 #### Jail Area
@@ -125,7 +119,7 @@ party what he has at his home (100 gp; it is obvious the orcs think he's richer
 than he is).
 
 ```statblock
-**Merchant:** AC 11, HD ½ (1d4 HP), #At 1 fist, Dam 1d3, Mv 40', Sv NM, ML 7,
+**Merchant:** AC 11, HD ½ (1d4 HP), ATK +0 -> 1d3 (fist), MV 40, SV NM, ML 7,
 XP 10
 ```
 
@@ -143,22 +137,24 @@ and two more to serve as messengers and go-fers. The chief has the key to the
 west temple door (see room #9).
 
 ```statblock
-**Orc Chief:** AC 15, HD 4, #At 1 longsword, Dam 1d8+1 due to Strength, Mv 20',
-Sv F4, ML 8, XP 240
+**Orc Chief:** AC 15, HD 4, ATK +5 -> 1d8+1 (longsword), MV 20, SV F4, ML 8, XP
+240
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ```statblock
-**Mountain Lion:** AC 14, HD 3+2, #At 2 claws, 1 bite, Dam 1d4 claw, 1d6 bite,
-Mv 50', Sv F3, ML 8, XP 145
+**Mountain Lion:** AC 14, HD 3+2, ATK +3 -> 1d4 (claw)/1d4 (claw)/1d6 (bite),
+MV 50, SV F3, ML 8, XP 145
 ```
 
 ```statblock
-**2 Wolves:** AC 13, HD 2, #At 1 bite, Dam 1d6, Mv 60', Sv F2, ML 8, XP 75 ea.
+**2 Wolves:** AC 13, HD 2, ATK +2 -> 1d6 (bite), MV 60, SV F2, ML 8, XP 75 ea.
 ```
 
 ```statblock
-**4 Orcs:** AC 14, HD 1, #At 1 longsword, Dam 1d8, Mv 30', Sv F1, ML 8, XP 25
+**4 Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1, ML 8, XP 25
 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 The throne is the treasure chest. There is a silk pillow on it which is worth
@@ -175,8 +171,9 @@ Several orcs are housed here as a guard post against those in lair B. Each has
 some in bags, some in the form of dried meats hanging on strings.
 
 ```statblock
-**4 Orcs:** AC 14, HD 1, #At 1 longsword, Dam 1d8, Mv 30', Sv F1, ML 8, XP 25
+**4 Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1, ML 8, XP 25
 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 8. Pools
@@ -213,8 +210,9 @@ orc temple from intruders. They have a cruel sense of humor. There is a 1-2 on
 orcs while exploring the caves.
 
 ```statblock
-**1d6 Wandering Orcs:** AC 14, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8,
+**1d6 Wandering Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8,
 XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### Entrance
@@ -224,11 +222,12 @@ that went looking for greener pastures and latched onto the orcs. Each has 1d6
 sp.
 
 ```statblock
-**4 Orcs:** AC 14, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**4 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ```statblock
-**Hobgoblin:** AC 14, HD 1, #At 1 scimitar, Dam 1d8, Mv 30', Sv F1, ML 8, XP 25
+**Hobgoblin:** AC 14, HD 1, ATK +1 -> 1d8 (scimitar), MV 30, SV F1, ML 8, XP 25
 ```
 
 ### 11. Secret Safe Room
@@ -249,8 +248,8 @@ Two orcs with spears and hand axes stand on guard duty at this door. Each has
 in case of attack.
 
 ```statblock
-**2 Orcs:** AC 14, HD 1, #At 1 spear or 1 hand axe, Dam 1d6, Mv 30', Sv F1, ML
-8, XP 25 ea.
+**2 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 13. Chief's Quarters
@@ -273,18 +272,20 @@ in the northeast corner is the alarm bell that rings if either of the trapped
 secret doors in room #11 is opened without disarming it first.
 
 ```statblock
-**Orc Chief:** AC 15, HD 4, #At 1 longsword, Dam 1d8+2, Mv 20', Sv F4, ML 9, XP
-240
+**Orc Chief:** AC 15, HD 4, ATK +6 -> 1d8+2 (longsword), MV 20, SV F4, ML 9, XP 240
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ```statblock
-**Orc War Leader:** AC 14, HD 2, #At 1 longsword, Dam 1d8+1, Mv 30', Sv F2, ML
+**Orc War Leader:** AC 14, HD 2, ATK +3 -> 1d8+1 (longsword), MV 30, SV F2, ML
 9, XP 75
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ```statblock
-**2 Orcs:** AC 14, HD 1, #At 1 longsword, Dam 1d8, Mv 30', Sv F1, ML 8 (9 while
+**2 Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1, ML 8 (9 while
 chief and/or leader are present), XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 14. Common Room
@@ -294,7 +295,8 @@ one who is standing against a wall. Several others are bruised. The game is to
 see who can take the most beating before flinching. Each has 1d6 sp.
 
 ```statblock
-**9 Orcs:** AC 14, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**9 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ### 15. Common Room
@@ -305,7 +307,8 @@ Hidden in a hole in the northeast corner (covered by a stack of fireplace rocks
 and a foot of earth) is a bag with 10 pp and 400 sp.
 
 ```statblock
-**7 Orcs:** AC 14, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**7 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
+- **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
 ## C. Hobgoblin Lair
@@ -333,7 +336,7 @@ for laying ambushes (i.e. hiding behind the hide and letting people get inside
 the room, then rushing out to attack).
 
 ```statblock
-**5 Hobgoblins:** AC 14, HD 1, #At 1 scimitar, Dam 1d8, Mv 30', Sv F1, ML 8, XP
+**5 Hobgoblins:** AC 14, HD 1, ATK +1 -> 1d8 (scimitar), MV 30, SV F1, ML 8, XP
 25 ea.
 ```
 
@@ -358,8 +361,8 @@ red funeral shrouds with thin gold threading and black details are being used
 as hammocks, each worth 50 gp.
 
 ```statblock
-**6 Hobgoblins:** AC 14 armored, 11 unarmored, HD 1, #At 1 scimitar, Dam 1d8,
-Mv 30' armored or 40', Sv F1, ML 8, XP 25 ea.
+**6 Hobgoblins:** AC 14 armored, 11 unarmored, HD 1, ATK +1 -> 1d8 (scmitar),
+MV 30 armored or 40, SV F1, ML 8, XP 25 ea.
 ```
 
 ### 18. Store Room
@@ -379,8 +382,8 @@ items. He has two pouches on his belt containing 300 ep in one and 300 gp in
 the other. He carries the key to this room on a string of hair on his belt.
 
 ```statblock
-**Hobgoblin:** AC 14, HD 3, #At 1 scimitar or 1 shortbow, Dam 1d8 scimitar, 1d6
-shortbow, Mv 30', Sv F3, ML 8, XP 145
+**Hobgoblin Leader:** AC 14, HD 3, ATK +3 -> 1d8 (scimitar) or d6 (shortbow),
+MV 30, SV F3, ML 8, XP 145
 ```
 
 ### 20. Guard Room
@@ -389,7 +392,7 @@ The hobgoblins here have piled up rubble in the hallway and stockpiled six
 vials of holy water to fend off the ghouls to the west. Each has 1d6 sp.
 
 ```statblock
-**4 Hobgoblins:** AC 14, HD 1, #At 1 scimitar, Dam 1d8, Mv 30', Sv F1, ML 8, XP
+**4 Hobgoblins:** AC 14, HD 1, ATK +1 -> 1d8 (scimitar), MV 30, SV F1, ML 8, XP
 25 ea.
 ```
 
@@ -404,12 +407,12 @@ Flesh** (1 use in it). A bag tied to the foot of the bed holds 600 gp, 1,200
 sp, and 1,800 cp.
 
 ```statblock
-**Hobgoblin Chief:** AC 15, HD 5, #At 1 scimitar, Dam 1d8, Mv 20', Sv F5, ML 8,
+**Hobgoblin Chief:** AC 15, HD 5, ATK +5 -> 1d8 (scimitar), MV 20, SV F5, ML 8,
 XP 360
 ```
 
 ```statblock
-**3 Hobgoblins:** AC 14, HD 1, #At 1 scimitar, Dam 1d8, Mv 30', Sv F1, ML 8 (9
+**3 Hobgoblins:** AC 14, HD 1, +1 -> 1d8 (scimitar), MV 30, SV F1, ML 8 (9
 while chief is present), XP 25 ea.
 ```
 
@@ -431,8 +434,19 @@ Three ghouls lurk here trying to get through the rubble to the hobgoblins in
 #20. They are not interested in skeletons or zombies as a possible food source.
 
 ```statblock
-**3 Ghouls:** AC 14, HD 2\*, #At 2 claws, 1 bite, Dam 1d4 claw, 1d4 bite, all
-plus paralysis, Mv 30', Sv F2, ML 9, XP 100 ea.
+**3 Ghouls:** AC 14, HD 2\*, +2 -> 1d4+**paralysis** (claw)/1d4+**paralysis**
+(claw)/1d4+**paralysis** (bite), MV 30, SV F2, ML 9, XP 100 ea.
+- **paralysis**: Living creatures hit by a ghoul’s bite or claw attack must
+  save vs. Paralysis or be paralyzed for 2d8 turns. Elves are immune to this
+  paralysis.
+- **surprise**: Ghouls try to attack with surprise whenever possible, striking
+  from behind tombstones or bursting from shallow graves with a 3-in-6 chance.
+- **undead**: They may be Turned by Clerics and are immune to sleep, charm, and
+  hold magics.
+- **infectious bite**: Humanoids bitten by ghouls may be infected with ghoul
+  fever. Each time a humanoid is bitten, there is a 5% chance of the infection
+  being passed. The afflicted humanoid is allowed to save vs. Death Ray; if the
+  save is failed, the humanoid dies within a day.
 ```
 
 ### 23. Skeletons
@@ -443,8 +457,12 @@ area is cluttered by broken coffins. The rubbish contains a silver dagger, 30
 gp, and 21 pp.
 
 ```statblock
-**6 Skeletons:** AC 13 (½ damage from edged weapons, 1 point only from arrows
-or bolts), HD 1, #At 1 spear, Dam 1d6, Mv 40', Sv F1, ML 12, XP 25 ea.
+**6 Skeletons:** AC 13, HD 1, ATK +1 -> 1d6 (spear), MV 40, SV F1, ML 12, XP 25
+ea.
+- **blade resistance**: ½ damage from edged weapons
+- **arrow resistance**: 1 point of maximum damage from arrows or bolts
+- **undead**: can be Turned by a Cleric, and are immune to sleep, charm or hold
+  magic.
 ```
 
 ### 24. Zombies
@@ -455,8 +473,11 @@ of what appears to have been an ornate cabinet are six intact vials of holy
 water and 56 gp.
 
 ```statblock
-**4 Zombies:** AC 12 (½ damage from blunt weapons, 1 point only from arrows or
-bolts), HD 2, #At 1 bludgeon, Dam 1d8, Mv 20', Sv F2, ML 12, XP 75 ea.
+**4 Zombies:** AC 12, HD 2, +2 -> 1d8 (fist), MV 20, SV F2, ML 12, XP 75 ea.
+- **blunt resistance*: ½ damage from blunt weapons
+- **arrow resistance**: 1 point of maximum damage from arrows or bolts
+- **undead**: can be Turned by a Cleric, and are immune to sleep, charm or hold
+  magic.
 ```
 
 ### 25. Skeletons
@@ -471,8 +492,12 @@ original owners will be so glad to have it recovered (as a sentimental
 heirloom) that they will pay 1,000 gp for it, if they are tracked down.
 
 ```statblock
-**6 Skeletons:** AC 13 (½ damage from edged weapons, 1 point only from arrows
-or bolts), HD 1, #At 1 weapon, Dam 1d6, Mv 40', Sv F1, ML 12, XP 25 ea.
+**6 Skeletons:** AC 13, HD 1, ATK +1 -> 1d6 (spear), MV 40, SV F1, ML 12, XP 25
+ea.
+- **blade resistance**: ½ damage from edged weapons
+- **arrow resistance**: 1 point of maximum damage from arrows or bolts
+- **undead**: can be Turned by a Cleric, and are immune to sleep, charm or hold
+  magic.
 ```
 
 ## E. Goblin Lair
@@ -494,8 +519,8 @@ certainly be trapped. More so, the goblins have slings and will pelt anyone who
 steps out to try to undo the net.
 
 ```statblock
-**6 Goblins:** AC 14, HD 1-1, #At 1 shortsword or 1 sling, Dam 1d6 shortsword,
-1d4 sling, Mv 20', Sv F1, ML 7, XP 25 ea.
+**6 Goblins:** AC 14, HD 1-1, +0 -> 1d6 (shortsword) or 1d4 (sling), MV 20, SV
+F1, ML 7, XP 25 ea.
 ```
 
 ### 27. Common Room
@@ -506,8 +531,8 @@ simple but well-made wooden furniture: stools, tables, cots, and bedding of
 common furs. Each has 1d6 cp.
 
 ```statblock
-**7 Goblins:** AC 11, HD 1-1, #At 1 shortsword, Dam 1d6, Mv 30', Sv F1, ML 7,
-XP 25 ea.
+**7 Goblins:** AC 11, HD 1-1, ATK +0 -> 1d6(shortsword), MV 30, SV F1, ML 7, XP
+25 ea.
 ```
 
 ### 28. Trap
@@ -527,7 +552,7 @@ representing a goblin god on a thong around his neck (value around 50 gp from a
 collector). He does not have armor.
 
 ```statblock
-**Goblin:** AC 11, HD 1-1, #At 1 shortsword, Dam 1d6, Mv 30', Sv F1, ML 7, XP
+**Goblin:** AC 11, HD 1-1, ATK +0 -> 1d6 (shortsword), MV 30, SV F1, ML 7, XP
 25
 ```
 
@@ -536,7 +561,7 @@ collector). He does not have armor.
 Some 11 goblins reside here (they do not have armor). Each has 1d6 cp.
 
 ```statblock
-**11 Goblins:** AC 11, HD 1-1, #At 1 shortsword, Dam 1d6, Mv 30', Sv F1, ML 7,
+**11 Goblins:** AC 11, HD 1-1, ATK +0 -> 1d6 (shortsword), MV 30, SV F1, ML 7,
 XP 25 ea.
 ```
 
@@ -559,12 +584,12 @@ door" check or the equivalent for a search). Buried in it is a simple wooden
 box containing another 472 gp, 178 sp, and 1,234 cp.
 
 ```statblock
-**Goblin King:** AC 15, HD 5-5, #At 1 **shortsword +1**, Dam 1d6+2, Mv 10', Sv
-F5, ML 9, XP 360
+**Goblin King:** AC 15, HD 5-5, ATK +5 -> 1d6+2 (shortsword), MV 10, SV F5, ML
+9, XP 360
 ```
 
 ```statblock
-**3 Goblins:** AC 14, HD 1-1, #At 1 shortsword, Dam 1d6, Mv 20', Sv F1, ML 9 (7
+**3 Goblins:** AC 14, HD 1-1, ATK +0 -> 1d6 (shortsword), MV 20, SV F1, ML 9 (7
 if king is dead or leaves), XP 25 ea.
 ```
 
@@ -587,13 +612,13 @@ night, a dozen torches will be kept just inside the entrance along with a
 covered bowl of hot coals.
 
 ```statblock
-**Bandit**, Dwarf Fighter 1: AC 13, AB +1, #At 1 shortsword or 1 light
-crossbow, Dam 1d6, Mv 30', Sv F1D, ML 8, XP 25 ea.
+**Bandit**, Dwarf Fighter 1: AC 13, ATK +1 -> 1d6 (shortsword or crossbow), MV
+30, SV F1D, ML 8, XP 25 ea.
 ```
 
 ```statblock
-**4 Bandits**, Human Fighter 1: AC 13, AB +1, #At 1 shortsword or 1 light
-crossbow, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**4 Bandits**, Human Fighter 1: AC 13, ATK +1 -> 1d6 (shortsword or crossbow),
+MV 30, SV F1, ML 8, XP 25 ea.
 ```
 
 ### 33. Common Room
@@ -604,7 +629,7 @@ The room is lit by two common oil lamps (wooden bowls with a notch for a wick).
 Oil is brought in with a wooden cup when needed.
 
 ```statblock
-**6 Bandits:** AC 13, F 1, #At 1 shortsword, Dam 1d6, Mv 30', Sv F1, ML 8, XP
+**6 Bandits:** AC 13, HD 1, ATK +1 -> 1d6 (shortsword), MV 30, SV F1, ML 8, XP
 25 ea.
 ```
 
@@ -624,7 +649,7 @@ lit by two common oil lamps (wooden bowls with a notch for a wick). Oil is
 brought in with a wooden cup when needed.
 
 ```statblock
-**6 Bandits:** AC 13, F 1, #At 1 shortsword, Dam 1d6, Mv 30', Sv F1, ML 8, XP
+**6 Bandits:** AC 13, HD 1, ATK +1 -> 1d6 (shortsword), MV 30, SV F1, ML 8, XP
 25 ea.
 ```
 
@@ -645,13 +670,13 @@ cp. The captain has the key to it stuffed in one boot. He has a ring of keys
 that go to the dungeon doors at #38 on his belt.
 
 ```statblock
-**Bandit Leader**, Human Fighter 4: AC 16 (17), AB +3 (+4 with magic
-longsword), #At 1 **longsword +1**, Dam 1d8+1, Mv 30', Sv F4, ML 8, XP 240
+**Bandit Leader**, AC 17, 4 HD, ATK +4 -> 1d8+1 (**longsword+1**), MV 30, SV
+F4, ML 8, XP 240
 ```
 
 ```statblock
-**2 Bandit Cronies**, Human Fighter 2: AC 15, AB +2, #At 1 shortsword, Dam 1d6,
-Mv 20', Sv F2, ML 8, XP 75 ea.
+**2 Bandit Cronies**, AC 15, HD 2, ATK +2 -> 1d6 (shortsword), MV 20, SV F2, ML
+8, XP 75 ea.
 ```
 
 ### 37. Stables
@@ -681,7 +706,7 @@ anyone's good graces (posing as the guard of a merchant), only to steal what
 she can and run off. She has no armor and no weapon.
 
 ```statblock
-**Bandit:** AC 11, HD 1, #At 1 fist, Dam 1d3, Mv 40', Sv F1, ML 8, XP 25
+**Bandit:** AC 11, HD 1, ATK +1 -> 1d3 (fist), MV 40, SV F1, ML 8, XP 25
 ```
 
 **Cell "d"** holds three jars of good wine, two jars of cheap wine, and a dozen
@@ -696,7 +721,8 @@ instructions as to who to let in. Each has 1d6 + 6 sp on their person. A common
 oil lamp (wooden bowl with wick) provides light.
 
 ```statblock
-**3 Bandits:** AC 13, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML 8, XP 25 ea.
+**3 Bandits:** AC 13, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25
+ea.
 ```
 
 ### 40. Treasure Room
@@ -726,8 +752,8 @@ bandits. Each room has a plain oil lamp (wooden bowl with notch for wick) and
 the main room has a wooden jug with a quart of oil.
 
 ```statblock
-**Elven Thief 3:** AC 14 due to dexterity, #At 1 shortsword or 1 shortbow, Dam
-1d6, Mv 30', Sv E-T3, ML 8, XP 145
+**Elven Thief 3:** AC 14, HD 3-3, ATK +2 -> 1d6 (shortsword or shortbow), MV
+30, SV E-T3, ML 8, XP 145
 ```
 
 ### 42. West Entrance
@@ -739,7 +765,7 @@ dozen torches are kept just inside the entrance along with a covered bowl of
 hot coals.
 
 ```statblock
-**5 Bandits:** AC 13, F 1, #At 1 shortsword, Dam 1d6, Mv 30', Sv F1, ML 8, XP
+**5 Bandits:** AC 13, HD 1, ATK +1 -> 1d6 (shortsword), MV 30, SV F1, ML 8, XP
 25 ea.
 ```
 
@@ -755,7 +781,7 @@ chief in room #48 has the key. The store room has dried meat, pickled
 vegetables in clay jars, and other supplies.
 
 ```statblock
-**9 Kobolds:** AC 13, HD ½ (1d4 HP), #At 1 tiny sword, Dam 1d4, Mv 20', Sv NM,
+**9 Kobolds:** AC 13, HD ½ (1d4 HP), ATK +0 -> 1d4 (tiny sword), MV 20, SV NM,
 ML 6, XP 10 ea.
 ```
 
@@ -764,7 +790,7 @@ ML 6, XP 10 ea.
 Seven kobolds lounge on benches and chairs around tables. None have armor.
 
 ```statblock
-**7 Kobolds:** AC 11, HD ½ (1d4 HP), #At 1 tiny sword, Dam 1d4, Mv 30', Sv NM,
+**7 Kobolds:** AC 11, HD ½ (1d4 HP), ATK +0 -> 1d4 (tiny sword), MV 30, SV NM,
 ML 6, XP 10 ea.
 ```
 
@@ -776,7 +802,7 @@ armor) inside are keeping normal rats as "pets" (they eat their pets now and
 then).
 
 ```statblock
-**12 Kobolds:** AC 11, HD ½ (1d4 HP), #At 1 tiny sword, Dam 1d4, Mv 30', Sv NM,
+**12 Kobolds:** AC 11, HD ½ (1d4 HP), ATK +0 -> 1d4 (tiny sword), MV 30, SV NM,
 ML 6, XP 10 ea.
 ```
 
@@ -787,7 +813,7 @@ kobolds inside do not have armor. Ordinary rats and mice scurry among the
 litter; some are being cooked on a fire.
 
 ```statblock
-**9 Kobolds:** AC 11, HD ½ (1d4 HP), #At 1 tiny sword, Dam 1d4, Mv 30', Sv NM,
+**9 Kobolds:** AC 11, HD ½ (1d4 HP), ATK +0 -> 1d4 (tiny sword), MV 30, SV NM,
 ML 6, XP 10 ea.
 ```
 
@@ -816,17 +842,17 @@ wooden lid tied on by rough fiber rope, inside which are 306 gp, 312 sp, and
 108 cp.
 
 ```statblock
-**Kobold Chief:** AC 13, HD 2, #At 1 shortsword, Dam 1d6, Mv 20', Sv F2, ML 7,
+**Kobold Chief:** AC 13, HD 2, ATK +2 -> 1d6 (shortsword), MV 20, SV F2, ML 7,
 XP 75
 ```
 
 ```statblock
-**2 Kobold Bodyguards:** AC 13, HD 1, #At 1 tiny sword, Dam 1d4, Mv 20', Sv F1,
+**2 Kobold Bodyguards:** AC 13, HD 1, ATK +1 -> 1d4 (tiny sword), MV 20, SV F1,
 ML 8 (7 if chief is defeated or leaves the area), XP 25 ea.
 ```
 
 ```statblock
-**4 Kobolds:** AC 13, HD ½ (1d4 HP), #At 1 tiny sword, Dam 1d4, Mv 20', Sv NM,
+**4 Kobolds:** AC 13, HD ½ (1d4 HP), ATK +0 -> 1d4 (tiny sword), MV 20, SV NM,
 ML 7 (6 if chief and bodyguards are defeated or leave the area), XP 10 ea.
 ```
 
@@ -842,8 +868,9 @@ Scuttling in the brush just outside the entrance are seven giant centipedes,
 attacking anyone who comes near:
 
 ```statblock
-**7 Giant Centipedes:** AC 11, HD ½ (1d4 HP), #At 1 bite, Dam poison, Mv 40',
-Sv NM, ML 7, XP 10 ea.
+**7 Giant Centipedes:** AC 11, HD ½ (1d4 HP), ATK +0 -> **poison** (bite), MV 40,
+SV NM, ML 7, XP 10 ea.
+- **poison**: save vs. Poison at +2 or die
 ```
 
 ## H. Lizard Man Lair
@@ -875,12 +902,15 @@ elevation. There are several boulders there which can be rolled into the
 hallway and packed with mud to prevent flooding.
 
 ```statblock
-**3 Lizard Men:** AC 15, HD 2, #At 1 spear, Dam 1d6+1, Mv 20', Sv F2, ML 11, XP
+**3 Lizard Men:** AC 15, HD 2, ATK +2 -> 1d6+1 (spear), MV 20, SV F2, ML 11, XP
 75 ea.
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ```statblock
-**Giant Gecko Lizard:** AC 15, HD 3+1, #At 1 bite, Dam 1d8, Mv 40', Sv F2, ML
+**Giant Gecko Lizard:** AC 15, HD 3+1, ATK +3 -> 1d8 (bite), MV 40, SV F2, ML
 7, XP 145
 ```
 
@@ -893,8 +923,11 @@ An empty chamber, stacked with firewood, dry grass for tinder, and rocks.
 The residence of three males; they are unarmored.
 
 ```statblock
-**3 Lizard Men:** AC 12, HD 2, #At 1 spear, Dam 1d6+1, Mv 30', Sv F2, ML 11, XP
+**3 Lizard Men:** AC 15, HD 2, ATK +2 -> 1d6+1 (spear), MV 20, SV F2, ML 11, XP
 75 ea.
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ### 53. Larder (Food Storage)
@@ -943,18 +976,27 @@ wears off. Once the whistle has been blown three times it loses all of its
 magic.
 
 ```statblock
-**Lizard Man Leader:** AC 15, HD 3, #At 1 spear, Dam 1d6+2, Mv 20', Sv F3, ML
+**Lizard Man Leader:** AC 15, HD 3, ATK +3 -> 1d6+2 (spear), MV 20, SV F3, ML
 11, XP 145
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ```statblock
-**2 Female Lizard Men:** AC 12, HD 2, #At 1 spear, Dam 1d6+1, Mv 30', Sv F2, ML
+**2 Female Lizard Men:** AC 12, HD 2, ATK +2 -> 1d6+1 (spear), MV 30, SV F2, ML
 11, XP 75 ea.
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ```statblock
-**6 Young Lizard Men:** AC 11, HD 1, #At 1 spear, Dam 1d6, Mv 30', Sv F1, ML
+**6 Young Lizard Men:** AC 11, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML
 10, XP 25 ea.
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ### 55. Common Room
@@ -963,8 +1005,11 @@ Three males are busy here, readying simple bamboo gigs for a fish-and-frog
 hunt.
 
 ```statblock
-**3 Lizard Men:** AC 12, HD 2, #At 1 spear, Dam 1d6+1, Mv 30', Sv F2, ML 11, XP
+**3 Lizard Men:** AC 12, HD 2, ATK +2 -> 1d6+1 (spear), MV 30, SV F2, ML 11, XP
 75 ea.
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ### 56. Guard Post
@@ -976,12 +1021,15 @@ some 30'. There are several boulders here which can be rolled into the hallway
 and packed with mud to prevent flooding.
 
 ```statblock
-**3 Lizard Men:** AC 15, HD 2, #At 1 spear, Dam 1d6+1, Mv 20', Sv F2, ML 11, XP
+**3 Lizard Men:** AC 15, HD 2, ATK +2 -> 1d6+1 (spear), MV 20, SV F2, ML 11, XP
 75 ea.
+- **surprise**: often hide in the water even while armored, standing on the
+  bottom with just nose and eyes exposed (similar to a crocodile). When they
+  are able to employ this maneuver, lizard men surprise on a 4-in-6.
 ```
 
 ```statblock
-**Giant Gecko Lizard:** AC 15, HD 3+1, #At 1 bite, Dam 1d8, Mv 40', Sv F2, ML
+**Giant Gecko Lizard:** AC 15, HD 3+1, ATK +3 -> 1d8 (bite), MV 40, SV F2, ML
 7, XP 145
 ```
 
@@ -1004,8 +1052,10 @@ Two bugbears with pole arms stand outside the entranceway, one on each side.
 Another is in the niche inside. Each carries 1d6 gp.
 
 ```statblock
-**3 Bugbears:** AC 15, HD 3+1, #At 1 polearm, Dam 1d10+1, Mv 30', Sv F3, ML 9,
+**3 Bugbears:** AC 15, HD 3+1, ATK +3 -> 1d10+1 (polearm), MV 30, SV F3, ML 9,
 XP 145 ea.
+- **surprise**: able to move in nearly complete silence, surprising opponents
+  on a 3-in-6
 ```
 
 ### 59. Swinging Arm Trap
@@ -1026,9 +1076,10 @@ food, bags of meat, three 50-foot sections of rope, a dozen iron spikes and
 other items.
 
 ```statblock
-**Yellow Mold:** AC Can always be hit, HD 2\*, #At Spores, Dam All within 10
-feet of the mold will be affected by the spores and must save vs. Death Ray or
-take 1d8 points of damage per round for 6 rounds, Mv 0, Sv NM, ML N/A, XP 100
+**Yellow Mold:** AC 0, HD 2\*, ATK **spores**, MV 0, SV NM, ML N/A, XP 100
+- **spores**: All within 10 feet of the mold will be affected by the spores and
+  must save vs. Death Ray or take 1d8 points of damage per round for 6 rounds.
+  Each patch can emit a cloud of spores once per day.
 ```
 
 ### 61. Common Room
@@ -1039,8 +1090,10 @@ decorated with three long strips of cheap paper scattered with bugbear
 battle and many enemies to feast on.
 
 ```statblock
-**3 Bugbears:** AC 15, HD 3+1, #At 1 scimitar, Dam 1d8+1, Mv 30', Sv F3, ML 9,
+**3 Bugbears:** AC 15, HD 3+1, ATK +3 -> 1d10+1 (polearm), MV 30, SV F3, ML 9,
 XP 145 ea.
+- **surprise**: able to move in nearly complete silence, surprising opponents
+  on a 3-in-6
 ```
 
 ### 62. Empty Common Room
@@ -1082,8 +1135,10 @@ room furnished with stools for guards, and iron loops and chains on the walls
 for victims. A hot brazier and fireplace poker is ready at all times.
 
 ```statblock
-**2 Bugbears:** AC 13, HD 3+1, #At 1 scimitar, Dam 1d8+1, Mv 30', Sv F3, ML 9,
+**2 Bugbears:** AC 13, HD 3+1, ATK +3 -> 1d8+1 (scimitar), MV 30', SV F3, ML 9,
 XP 145 ea.
+- **surprise**: able to move in nearly complete silence, surprising opponents
+  on a 3-in-6
 ```
 
 Cells "a" and "d" are empty. "b" holds a desperate merchant who will pay 200 gp
@@ -1097,8 +1152,10 @@ furnished with common rattan furniture (tables and chairs) and heavy wooden
 bunks.
 
 ```statblock
-**3 Bugbears:** AC 15, HD 3+1, #At 1 scimitar, Dam 1d8+1, Mv 30', Sv F3, ML 9,
+**3 Bugbears:** AC 13, HD 3+1, ATK +3 -> 1d8+1 (scimitar), MV 30', SV F3, ML 9,
 XP 145 ea.
+- **surprise**: able to move in nearly complete silence, surprising opponents
+  on a 3-in-6
 ```
 
 ### 67. Owlbear
@@ -1112,8 +1169,11 @@ chained up to keep it from getting into supplies and being annoying. The
 bugbears often take it outside with them.
 
 ```statblock
-**Owlbear:** AC 15, HD 5, #At 2 claws, 1 bite + 1 hug, Dam 1d8 claw, 1d8 bite,
-2d8 hug, Mv 40', Sv F5, ML 9, XP 360
+**Owlbear:** AC 15, HD 5, ATK +5 -> 1d8 (claw)/1d8 (bite)/1d8 (bite) + **hug**,
+MV 40, SV F5, ML 9, XP 360
+- **hug**: If both claws hit, the owlbear hugs its victim for an additional 2d8
+  damage
+- **surprise**: while in their native territory, surprises in a 4-in-6
 ```
 
 ### 68. Main Boss
@@ -1126,13 +1186,17 @@ treasure room (#64). The locked door to the west is stout, thick, and
 iron-bound, but the room it opens into is empty.
 
 ```statblock
-**Bugbear Chief:** AC 15, HD 6+6, #At 1 scimitar, Dam 1d8+3, Mv 30', Sv F6, ML
+**Bugbear Chief:** AC 15, HD 6+6, ATK +6 -> 1d8+3 (scimitar), MV 30, SV F6, ML
 10, XP 500
+- **surprise**: able to move in nearly complete silence, surprising opponents
+  on a 3-in-6
 ```
 
 ```statblock
-**2 Bugbears:** AC 15, HD 3+1, #At 1 polearm, Dam 1d10+1, Mv 30', Sv F3, ML 10
+**2 Bugbears:** AC 15, HD 3+1, ATK +3 -> 1d10+1 (polearm), MV 30, SV F3, ML 10
 (9), XP 145 ea.
+- **surprise**: able to move in nearly complete silence, surprising opponents
+  on a 3-in-6
 ```
 
 ## J. Gnoll Lair
@@ -1166,8 +1230,9 @@ sections of a large tree have been carved into crude benches. Each gnoll has
 1d6 ep.
 
 ```statblock
-**3 Gnolls:** AC 15, HD 2, #At 1 heavy sword, Dam 2d4, Mv 30', Sv F2, ML 8, XP
-75 ea.
+**3 Gnolls:** AC 15, HD 2, ATK +2 -> 2d4 (heavy sword), MV 30, SV F2, ML 8, XP
+75
+ea.
 ```
 
 ### 71. Guard Post
@@ -1177,7 +1242,7 @@ Three gnolls wait here – one is on duty at the corner at the area marked "w"
 intruders are spotted. They have shabby furniture. Each gnoll has 1d6 ep.
 
 ```statblock
-**3 Gnolls:** AC 15, HD 2, #At 1 heavy sword, Dam 2d4, Mv 30', Sv F2, ML 8, XP
+**3 Gnolls:** AC 15, HD 2, ATK +2 -> 2d4 (heavy sword), MV 30, SV F2, ML 8, XP
 75 ea.
 ```
 
@@ -1190,12 +1255,12 @@ time outside the doors debating what to do. Each gnoll has 1d6 ep. The unmarked
 room to the southwest contains crude cots.
 
 ```statblock
-**5 Gnolls:** AC 15, HD 2, #At 1 heavy sword, Dam 2d4, Mv 30', Sv F2, ML 8, XP
-75 ea.
+**5 Gnolls:** AC 15, HD 2, ATK +2 -> #At 1 heavy sword, Dam 2d4, MV 30, SV F2,
+ML 8, XP 75 ea.
 ```
 
 ```statblock
-**Wolf:** AC 13, HD 2, #At 1 bite, Dam 1d6, Mv 60', Sv F2, ML 8, XP 75
+**Wolf:** AC 13, HD 2, ATK +2 -> 1d6 (bite), MV 60, SV F2, ML 8, XP 75
 ```
 
 ### 73. Cavern
@@ -1214,12 +1279,12 @@ size), many of them smashed. One jar contains two keys tied together: they open
 the treasure room to the south and the store room at #75.
 
 ```statblock
-**Gnoll leader:** AC 15, HD 6, #At 1 **battle axe +1**, Dam 1d8+2, Mv 30', Sv
-F6, ML 8, XP 500
+**Gnoll leader:** AC 15, HD 6, ATK +6 -> 1d8+2 (**battle axe +1**), MV 30, SV F6,
+ML 8, XP 500
 ```
 
 ```statblock
-**2 Gnoll Females:** AC 15, HD 2, #At 1 heavy sword, Dam 2d4, Mv 30', Sv F2, ML
+**2 Gnoll Females:** AC 15, HD 2, ATK +2 -> 2d4 (heavy sword), MV 30, SV F2, ML
 8, XP 75 ea.
 ```
 
@@ -1239,8 +1304,9 @@ goods including food, raw cloth in bolts (about 6, each worth perhaps 1 to 5
 gp), and other items.
 
 ```statblock
-**Giant Black Widow Spider:** AC 14, HD 3\*, #At 1 bite, Dam 2d6 + poison, Mv
-20' 40' web, Sv F3, ML 8, XP 175
+**Giant Black Widow Spider:** AC 14, HD 3\*, ATK +3 -> 2d6 + **poison** (bite),
+MV 20 (40' web), SV F3, ML 8, XP 175
+- **poison**: save vs. Poison at a penalty of -2 or die
 ```
 
 ### 75. Storeroom
@@ -1264,7 +1330,7 @@ other items. A pile of coal lies beside an iron brazier and with it are crude
 iron pokers of various types.
 
 ```statblock
-**Gnoll:** AC 15, HD 2, #At 1 heavy sword, Dam 2d4, Mv 30', Sv F2, ML 8, XP 75
+**Gnoll:** AC 15, HD 2, ATK +2 -> 2d4 (heavy sword), MV 30', SV F2, ML 8, XP 75
 ```
 
 <!-- license: ogl-1.0a -->

@@ -10,13 +10,13 @@ dead-silent underground, making a Thief's ability to Move Silently handy.
 Contrast that to when the wind is blowing outdoors and the sound of the leaves
 makes a constant background noise.
 
-The **ceilings** are typically 10 to 15 feet high.
+The **ceilings** are typically 10-15' high.
 
 The **doors** to rooms are heavy wooden doors that open with a simple latch and
 can be barred from inside.
 
 **Steps** have a 1 to 1 grade, going down 1 foot for each foot of
-length (so 10 foot long steps drop 10 feet in elevation).
+length (so 10' long steps drop 10' in elevation).
 
 ## A: Orc Lair
 
@@ -484,7 +484,7 @@ furniture: stools, tables, cots, and bedding of common furs.
 
 ### 28: Trap
 
-This pit trap is 10 feet deep. The covering is cleverly made and tactics like
+This pit trap is 10' deep. The covering is cleverly made and tactics like
 trying to tap for a hollow floor require a standard trap-finding check to see
 if a faint noise is heard.
 
@@ -982,7 +982,7 @@ food, bags of meat, three 50' lengths of rope, and a dozen iron spikes.
 
 ```statblock
 **Yellow Mold:** AC 0, HD 2\*, ATK **spores**, MV 0, SV NM, ML N/A, XP 100
-- **spores**: All within 10 feet of the mold will be affected by the spores and
+- **spores**: All within 10' of the mold will be affected by the spores and
   must save vs. Death Ray or take 1d8 points of damage per round for 6 rounds.
   Each patch can emit a cloud of spores once per day.
 ```
@@ -1020,7 +1020,7 @@ room #68 has the key; -20% to pick). Tucked away on one side of the door frame
 is a small niche; unless someone pokes a dagger blade or such inside and
 presses on a latch there, a bladder over the door releases a blast of gas that
 floods the area outside the door; it catches fire if open flame (torch,
-lantern, etc.) is nearby, doing 1d6 points of damage to all within 10 feet
+lantern, etc.) is nearby, doing 1d6 points of damage to all within 10'
 (half damage with save vs. Dragon Breath). If there is no flame, it is harmless
 and dissipates in 1d6 turns.
 

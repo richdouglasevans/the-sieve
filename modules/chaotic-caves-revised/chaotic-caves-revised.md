@@ -22,8 +22,8 @@ length (so 10 foot long steps drop 10 feet in elevation).
 
 These orcs share (along with those at lair B below) the duty of guarding the
 local orc temple from intruders. They are brash and haughty, prone to cruelty,
-tricks, and nastiness. There is a chance 2-in-6 chance per 6 turns that the
-player characters encounter 1d6 orcs moving about.
+tricks, and nastiness. There is a 2-in-6 chance per 6 turns that the player
+characters encounter 1d6 orcs moving about.
 
 ```statblock
 **1d6 Wandering Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1,
@@ -33,9 +33,8 @@ ML 8, XP 25 ea.
 
 ### 1: Entrance
 
-Two orcs stand guard outside this gaping entranceway, leaning on their
-spears. Others will be inside the first chamber, which is their usual bunk
-room.
+Two orcs stand guard outside this gaping entranceway, leaning on their spears.
+The other four lounge in their bunks.
 
 ```statblock
 **6 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
@@ -44,15 +43,14 @@ room.
 
 ### 2: Empty Room
 
-The walls and some of the ceiling of this room collapsed some time ago. It is
-currently unfit to live in.
+The walls and some of the ceiling lie collapsed on the floor. Mold and mildew permeate.
 
 ### 3: Common Room
 
-These are the quarters of a number of orcs, with their weapons and gear. Crude
-furniture is in the center of the room, and wooden bunks line the walls. In the
-back are sacks of food stuffs (potatoes, etc.) and hanging meat (12 – 72 pounds
-each of veggies and meat).
+Wooden bunks line the walls, surrounding crude furniture. In the back are
+**sacks** and hanging meat. 8 orcs loiter.
+
+**sacks**: contain ~50lbs of foodstuff.
 
 ```statblock
 **8 Orcs:** AC 14, HD 1, ATK +1 -> 1d6 (spear), MV 30, SV F1, ML 8, XP 25 ea.
@@ -61,15 +59,10 @@ each of veggies and meat).
 
 ### 4: Wolf Pen
 
-Both ends of this area are blocked by a wooden fence spanning the complete
-width and height of the halls; in the center of each is a wooden gate about 3'
-wide and 6' high, lashed shut by rope. Inside are three wolves. They are
-usually alert and will set up a clamorous barking and howling if they hear or
-smell careless parties, resulting in a chance of attracting orcs to see what is
-going on (use the wandering orc concept explained at the start of the lair for
-the chance and number of orcs). Make a "hear noise" roll to see if the jailers
-in #5 below hear and investigate as well. The soft earthen floor of the room is
-littered with wooden bowls full of water, bones, and offal, but nothing else.
+Wooden fences block both ends. A wooden gate lives in the center of each fence,
+3' wide and 6' high, lashed shut by rope. Three wolves den inside. They are
+alert — barking and howling if they sense the PCs. The soft earthen floor of
+the room is littered with wooden bowls full of water, bones, and offal.
 
 ```statblock
 **3 Wolves:** AC 13, HD 2, ATK +2 -> 1d6 (bite), MV 60, SV F2, ML 8, XP 75 ea.
@@ -77,10 +70,10 @@ littered with wooden bowls full of water, bones, and offal, but nothing else.
 
 ### 5: Door to Jail
 
-Behind this door are the quarters for the big, sweaty orc who serves as the
-warden of the jail (and also chief torturer) and two assistants. The key to the
-jail door is hung on a hide cord on the wall. Crude furniture and various
-simple wooden or stone interrogation devices fill the room.
+The quarters for the big, sweaty orc warden (and chief torturer) and two
+assistants. The key to the jail (east) hangs from the wall on a hide cord.
+Crude furniture and various simple wooden or stone interrogation devices fill
+the room.
 
 ```statblock
 **Orc Warden:** AC 14, HD 2, ATK +3 -> 1d8+1 (longsword), MV 30, SV F2, ML 8,
@@ -96,10 +89,10 @@ ea.
 
 #### Jail Area
 
-The locked door to the east opens into the jail containing a merchant
-(bedraggled and missing a finger, which was sent off with a ransom note).
-Saved, he will give the party what he has at his home (100gp; the orcs think
-he's richer than he is).
+Locked. Imprisons a bedraggled **merchant**.
+
+**merchant**: missing a finger (sent off with a random note). Offers a 100gp
+ransom for his rescue, payable from his funds in town.
 
 ```statblock
 **Merchant:** AC 11, HD ½ (1d4 HP), ATK +0 -> 1d3 (fist), MV 40, SV NM, ML 7,
@@ -109,14 +102,21 @@ XP 10
 ### 6: Chief's Room
 
 The strong, shrewd leader of the orcs resides here, sitting on a large,
-heavily-built throne. The sub-room to the south contains a bed and other
+heavily-built **throne**. The sub-room to the south contains a bed and other
 personal furniture. His pets are also here: a mountain lion and two wolves. The
-tawny cat wears a collar with gems (100gp) that is connected to a steel chain.
-The chain is usually attached to a steel hoop on the base of the throne; the
-chain can be released quickly. The wolves are chained to the wall beside the
-door. Four other orcs reside: two are here on permanent duty and two more to
-serve as messengers and go-fers. The chief has the key to the west temple door
-(see room #9).
+tawny cat wears a collar with gems (100gp) that is connected to a **steel
+chain** to the base of the throne. The wolves are chained (20' length) to the
+wall beside the door. The chief has the key to the west temple door (see room
+#9).
+
+**throne**: Comforted by a silk pillow (200gp). Under the flip-up seat is
+671gp, 1,235sp, and 785cp, and a stoppered flask in a padded jar (**Potion of
+Passwall**).
+
+**steel chain**: can be released quickly
+
+**Potion of Passwall**: replicates the effect of the 5th-level Magic-User spell
+of that name when poured onto an appropriate surface.
 
 ```statblock
 **Orc Chief:** AC 15, HD 4, ATK +5 -> 1d8+1 (longsword), MV 20, SV F4, ML 8, XP
@@ -139,18 +139,10 @@ ea.
 - **light sensitivity**: -1 to attack in bright sunlight or magical light
 ```
 
-There is a silk pillow on the throne (200gp). Under the flip-up seat is 671gp,
-1,235sp, and 785cp, and a stoppered flask in a padded jar.
-
-A stoppered flask in a padded jar contains a **Potion of Passwall** – which
-replicates the effect of the 5th-level Magic-User spell of that name when
-poured onto an appropriate surface.
-
 ### 7: Common Room/Guard Room
 
-Several orcs are housed here as a guard post against those in lair B. The room
-is cluttered with crude furniture and common foods stuffs, some in bags, some
-in the form of dried meats hanging on strings.
+Several orcs guard against those in lair B. Crude furniture and common foods
+stuffs clutter the room — in bags or as dried meats hanging on strings.
 
 ```statblock
 **4 Orcs:** AC 14, HD 1, ATK +1 -> 1d8 (longsword), MV 30, SV F1, ML 8, XP 25
@@ -161,28 +153,21 @@ ea.
 ### 8: Pools
 
 These pools of water are fed by underground springs. They provide a year-round
-source of fresh water. They are 6' deep and clean, but otherwise not unusual.
+source of fresh water. They are 6' deep and clean.
 
 ### 9: Shared Hallway
 
 At each end of this hallway is a heavy, thick wooden door bound by strong steel
-bands, with crafty and heavy locks. Each of the orc chiefs (rooms #6 and #13)
-has the key to the opposite side. They must cooperate to enter the temple.
-
-Set here as temple guards, the orcs on either side have been fighting so
-savagely for the affections of the god in the temple that a high priest had the
-doors locked. She gave the keys to the chiefs, with the admonishment that any
-further monkey business was not going to be tolerated.
+bands, with heavy locks. Each of the orc chiefs (rooms #6 and #13) has the key
+to the opposite side.
 
 ### 10: Orc Temple
 
-This temple was carefully cut from the living stone and is well-maintained. The
-four pillars are fluted and ornate; the floor is tiled with polished green and
-red marble. The ceiling sweeps up 20' high. On a dais 6' above the floor rests
-the statue of a vindictive, evil orc god. It is carved from a single shining
-piece of black basalt, standing 12' high. It has two red gems for eyes (250gp
-ea). Steps are not provided for getting atop the dais; no one is supposed to
-stand on it.
+Carefully cut from the living stone and well-maintained. The four pillars are
+fluted and ornate. Polished green red marble tiles the floor. The ceiling
+sweeps 20' high. On a dais 6' above the floor rests the 12' statue of a
+vindictive, evil orc god, carved from a single shining piece of black basalt.
+It has two red gems for eyes (250gp ea).
 
 ## B: Orc Lair
 

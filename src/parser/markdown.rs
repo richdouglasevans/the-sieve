@@ -9,15 +9,12 @@ use crate::parser::extensions::{
 
 /// Parse markdown content into our intermediate AST
 pub fn parse(content: &str) -> Result<Document> {
-    // Pre-process to convert === delimited stat blocks
-    let content = preprocess_statblocks(content);
-
     let mut options = Options::empty();
     options.insert(Options::ENABLE_TABLES);
     options.insert(Options::ENABLE_STRIKETHROUGH);
     options.insert(Options::ENABLE_TASKLISTS);
 
-    let parser = Parser::new_ext(&content, options);
+    let parser = Parser::new_ext(content, options);
     let mut document = Document::new();
     let mut state = ParserState::new();
 
@@ -26,44 +23,6 @@ pub fn parse(content: &str) -> Result<Document> {
     }
 
     Ok(document)
-}
-
-/// Convert /// delimited stat blocks to code fence format for parsing
-fn preprocess_statblocks(content: &str) -> String {
-    let mut result = String::new();
-    let mut in_statblock = false;
-    let mut statblock_content = String::new();
-
-    for line in content.lines() {
-        if line.trim() == "///" {
-            if in_statblock {
-                // End of stat block - output as code fence
-                result.push_str("```statblock\n");
-                result.push_str(&statblock_content);
-                result.push_str("```\n");
-                statblock_content.clear();
-                in_statblock = false;
-            } else {
-                // Start of stat block
-                in_statblock = true;
-            }
-        } else if in_statblock {
-            statblock_content.push_str(line);
-            statblock_content.push('\n');
-        } else {
-            result.push_str(line);
-            result.push('\n');
-        }
-    }
-
-    // Handle unclosed stat block
-    if in_statblock && !statblock_content.is_empty() {
-        result.push_str("```statblock\n");
-        result.push_str(&statblock_content);
-        result.push_str("```\n");
-    }
-
-    result
 }
 
 struct ParserState {

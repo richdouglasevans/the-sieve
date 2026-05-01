@@ -27,10 +27,13 @@ fn run(args: &Args) -> Result<(), SieveError> {
         eprintln!("Reading: {}", args.input.display());
     }
 
-    // Get the base path for resolving relative paths
+    // Get the base path for resolving relative paths. `Path::parent` returns
+    // `Some("")` for a bare filename like `FOO.md`, which then breaks
+    // `Command::current_dir("")` downstream — fall back to CWD in that case.
     let base_path = args
         .input
         .parent()
+        .filter(|p| !p.as_os_str().is_empty())
         .map(|p| p.to_path_buf())
         .unwrap_or_else(|| std::env::current_dir().unwrap_or_default());
 

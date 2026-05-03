@@ -3,12 +3,12 @@ use std::path::Path;
 use crate::ast::{Alignment, Document, Element, Image, Inline, ListItem, Table};
 use crate::licenses::{self, LicenseFragment};
 
-/// Render a document AST to HTML
+/// Render a document AST to HTML for debugging the AST → HTML pipeline.
+/// Not paginated; intended for browser viewing.
 pub fn render_to_html(document: &Document, _base_path: &Path) -> String {
     let mut output = String::new();
     let mut in_single_column = false;
 
-    // HTML preamble
     output.push_str(&generate_html_preamble());
 
     output.push_str("<body>\n");
@@ -18,30 +18,17 @@ pub fn render_to_html(document: &Document, _base_path: &Path) -> String {
         match element {
             Element::ColumnLayout(cols) => {
                 if *cols == 1 && !in_single_column {
-                    // Close two-column div, start single-column
                     output.push_str("</div>\n<div class=\"content single-column\">\n");
                     in_single_column = true;
                 } else if *cols == 2 && in_single_column {
-                    // Close single-column div, start two-column
                     output.push_str("</div>\n<div class=\"content two-column\">\n");
                     in_single_column = false;
                 }
             }
             Element::PageBreak => {
-                // Close the column container so the break property attaches at
-                // top level — WeasyPrint is unreliable about honoring
-                // `break-after: page` on a zero-height block inside multicolumn.
-                let column_class = if in_single_column { "single-column" } else { "two-column" };
-                output.push_str("</div>\n");
-                output.push_str("<div class=\"page-break\"></div>\n");
-                output.push_str(&format!("<div class=\"content {}\">\n", column_class));
+                output.push_str("<hr class=\"page-break\">\n");
             }
             Element::License { kind, info } => {
-                // Close the current column flow so `break-before: page` on the
-                // license wrapper applies cleanly (CSS multicolumn + column-span
-                // interacts badly with page-break properties in WeasyPrint).
-                let column_class = if in_single_column { "single-column" } else { "two-column" };
-                output.push_str("</div>\n");
                 output.push_str("<section class=\"license-section\">\n");
                 output.push_str(&format!(
                     "<div class=\"license-title\">{}</div>\n",
@@ -64,21 +51,19 @@ pub fn render_to_html(document: &Document, _base_path: &Path) -> String {
                 output.push_str("<div class=\"license\">\n");
                 for frag in licenses::fragments(*kind) {
                     match frag {
-                        LicenseFragment::Heading2(t) => output
-                            .push_str(&format!("<h2>{}</h2>\n", escape_html(&t))),
-                        LicenseFragment::Heading3(t) => output
-                            .push_str(&format!("<h3>{}</h3>\n", escape_html(&t))),
-                        LicenseFragment::Paragraph(t) => output
-                            .push_str(&format!("<p>{}</p>\n", escape_html(&t))),
+                        LicenseFragment::Heading2(t) => {
+                            output.push_str(&format!("<h2>{}</h2>\n", escape_html(&t)))
+                        }
+                        LicenseFragment::Heading3(t) => {
+                            output.push_str(&format!("<h3>{}</h3>\n", escape_html(&t)))
+                        }
+                        LicenseFragment::Paragraph(t) => {
+                            output.push_str(&format!("<p>{}</p>\n", escape_html(&t)))
+                        }
                     }
                 }
                 output.push_str("</div>\n");
                 output.push_str("</section>\n");
-                output.push_str(&format!("<div class=\"content {}\">\n", column_class));
-            }
-            Element::Heading { level: 1, text } => {
-                // H1 spans all columns
-                output.push_str(&format!("<h1>{}</h1>\n", escape_html(text)));
             }
             _ => {
                 output.push_str(&render_element(element));
@@ -98,23 +83,17 @@ fn generate_html_preamble() -> String {
 <head>
 <meta charset="UTF-8">
 <style>
-@page {
-  size: 5.5in 8.5in;
-  margin: 0.5in 0.4in;
-}
-
 body {
   font-family: Palatino, "Palatino Linotype", Georgia, serif;
   font-size: 9pt;
   line-height: 1.4;
-  margin: 0;
+  margin: 1em;
   padding: 0;
 }
 
 .content.two-column {
   column-count: 2;
   column-gap: 11pt;
-  column-fill: balance;
 }
 
 .content.single-column {
@@ -127,28 +106,24 @@ h1 {
   font-size: 18pt;
   font-weight: bold;
   margin: 0.5em 0 0.8em 0;
-  page-break-after: avoid;
 }
 
 h2 {
   font-size: 12pt;
   font-weight: bold;
   margin: 1em 0 0.6em 0;
-  page-break-after: avoid;
 }
 
 h3 {
   font-size: 10pt;
   font-weight: bold;
   margin: 0.8em 0 0.5em 0;
-  page-break-after: avoid;
 }
 
 h4 {
   font-size: 9pt;
   font-weight: bold;
   margin: 0.6em 0 0.4em 0;
-  page-break-after: avoid;
 }
 
 p {
@@ -165,26 +140,20 @@ li {
   margin-bottom: 0.3em;
 }
 
-/* Nested lists use hollow bullets */
 ul ul, ol ul {
   list-style-type: circle;
 }
 
-/* Hide bullet for list items that only contain a nested list */
-li:has(> ul:first-child):has(> ul:last-child) {
-  list-style-type: none;
-}
+li:has(> ul:first-child):has(> ul:last-child),
 li:has(> ol:first-child):has(> ol:last-child) {
   list-style-type: none;
 }
 
-/* Stat block styling */
 .stat-block {
   background-color: #e8e8e8;
   padding: 8pt;
   border-radius: 2pt;
   margin: 0.5em 0;
-  break-inside: avoid;
 }
 
 .stat-block ul {
@@ -196,24 +165,20 @@ li:has(> ol:first-child):has(> ol:last-child) {
   margin-bottom: 0.1em;
 }
 
-/* Boxed text (read-aloud) styling */
 .boxed-text {
   background-color: #f4f4f0;
   border: 0.5pt solid #999;
   padding: 8pt;
   margin: 0.5em 0;
   font-style: italic;
-  break-inside: avoid;
 }
 
-/* Code blocks */
 pre {
   font-family: monospace;
   font-size: 8pt;
   background-color: #f5f5f5;
   padding: 8pt;
   overflow-x: auto;
-  break-inside: avoid;
 }
 
 code {
@@ -223,7 +188,6 @@ code {
   padding: 1pt 3pt;
 }
 
-/* Tables */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -242,7 +206,6 @@ th {
   font-weight: bold;
 }
 
-/* Blockquotes */
 blockquote {
   margin: 0.5em 0 0.5em 1em;
   padding-left: 0.5em;
@@ -250,35 +213,30 @@ blockquote {
   font-style: italic;
 }
 
-/* Links */
 a {
   color: #333;
   text-decoration: underline;
 }
 
-/* Images */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Thematic break */
 hr {
   border: none;
   border-top: 1pt solid #999;
   margin: 1em 0;
 }
 
-/* Page break */
-.page-break {
-  break-after: page;
-  page-break-after: always;
+/* Visible separator for explicit page breaks (HTML is not paginated). */
+hr.page-break {
+  border-top: 2pt dashed #999;
+  margin: 1.5em 0;
 }
 
-/* License page */
 .license-section {
-  break-before: page;
-  page-break-before: always;
+  margin-top: 2em;
 }
 
 .license-title {
@@ -286,16 +244,17 @@ hr {
   font-size: 13pt;
   font-weight: bold;
   margin: 0.5em 0 0.5em 0;
-  page-break-after: avoid;
 }
 
 .license-attribution {
+  text-align: center;
   font-size: 9pt;
   font-weight: bold;
   margin: 0.4em 0;
 }
 
 .license-changes {
+  text-align: center;
   font-size: 9pt;
   font-style: italic;
   margin: 0.3em 0 0.6em 0;
@@ -317,14 +276,12 @@ hr {
   font-size: 8pt;
   font-weight: bold;
   margin: 0.6em 0 0.2em 0;
-  page-break-after: avoid;
 }
 
 .license h3 {
   font-size: 7pt;
   font-weight: bold;
   margin: 0.4em 0 0.2em 0;
-  page-break-after: avoid;
 }
 </style>
 </head>

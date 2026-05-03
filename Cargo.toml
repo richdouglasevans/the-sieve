@@ -1,6 +1,6 @@
 [package]
 name = "the-sieve"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "A CLI tool to convert TTRPG markdown to half-letter PDFs for booklet printing"
 license = "MIT"

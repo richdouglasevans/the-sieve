@@ -1,8 +1,6 @@
 use std::path::Path;
-use std::process::Command;
 
 use crate::ast::{Alignment, Document, Element, Image, Inline, ListItem, Table};
-use crate::error::{SieveError, Result};
 use crate::licenses::{self, LicenseFragment};
 
 /// Render a document AST to HTML
@@ -699,51 +697,3 @@ fn apply_typography(text: &str) -> String {
     text.replace("->", "\u{2192}")
 }
 
-/// Compile HTML to PDF using WeasyPrint
-pub fn compile_to_pdf(html: &str, base_path: &Path) -> Result<Vec<u8>> {
-    // Write HTML to a temp file (use absolute paths)
-    let abs_base = base_path.canonicalize().unwrap_or_else(|_| base_path.to_path_buf());
-    let html_path = abs_base.join(".the_sieve_temp.html");
-    let pdf_path = abs_base.join(".the_sieve_temp.pdf");
-
-    std::fs::write(&html_path, html)
-        .map_err(|e| SieveError::WriteFile {
-            path: html_path.clone(),
-            source: e,
-        })?;
-
-    // Call WeasyPrint
-    let output = Command::new("weasyprint")
-        .arg(&html_path)
-        .arg(&pdf_path)
-        .current_dir(&abs_base)
-        .output()
-        .map_err(|e| SieveError::PdfRender(format!("Failed to run weasyprint: {}", e)))?;
-
-    // Clean up temp HTML
-    let _ = std::fs::remove_file(&html_path);
-
-    if !output.status.success() {
-        let stderr = String::from_utf8_lossy(&output.stderr);
-        let _ = std::fs::remove_file(&pdf_path);
-        return Err(SieveError::PdfRender(format!("WeasyPrint failed: {}", stderr)));
-    }
-
-    // Read the PDF
-    let pdf_data = std::fs::read(&pdf_path)
-        .map_err(|e| SieveError::ReadFile {
-            path: pdf_path.clone(),
-            source: e,
-        })?;
-
-    // Clean up temp PDF
-    let _ = std::fs::remove_file(&pdf_path);
-
-    Ok(pdf_data)
-}
-
-/// Full pipeline: AST -> HTML -> PDF
-pub fn render_to_pdf(document: &Document, base_path: &Path) -> Result<Vec<u8>> {
-    let html = render_to_html(document, base_path);
-    compile_to_pdf(&html, base_path)
-}

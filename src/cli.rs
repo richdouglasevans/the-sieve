@@ -27,11 +27,6 @@ pub struct Args {
     /// Output intermediate HTML file instead of PDF
     #[arg(long)]
     pub html_only: bool,
-
-    /// Use the native (krilla+parley) renderer instead of WeasyPrint.
-    /// Experimental — feature parity with WeasyPrint is incomplete.
-    #[arg(long)]
-    pub native: bool,
 }
 
 impl Args {

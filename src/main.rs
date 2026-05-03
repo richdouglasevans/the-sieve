@@ -3,7 +3,7 @@ use std::process::ExitCode;
 
 use the_sieve::cli::{parse_args, Args};
 use the_sieve::error::SieveError;
-use the_sieve::{convert_markdown_to_html, convert_markdown_to_pdf, convert_markdown_to_pdf_native};
+use the_sieve::{convert_markdown_to_html, convert_markdown_to_pdf};
 
 fn main() -> ExitCode {
     let args = parse_args();
@@ -17,7 +17,6 @@ fn main() -> ExitCode {
 }
 
 fn run(args: &Args) -> Result<(), SieveError> {
-    // Read input file
     let input_content = fs::read_to_string(&args.input).map_err(|e| SieveError::ReadFile {
         path: args.input.clone(),
         source: e,
@@ -27,9 +26,8 @@ fn run(args: &Args) -> Result<(), SieveError> {
         eprintln!("Reading: {}", args.input.display());
     }
 
-    // Get the base path for resolving relative paths. `Path::parent` returns
-    // `Some("")` for a bare filename like `FOO.md`, which then breaks
-    // `Command::current_dir("")` downstream — fall back to CWD in that case.
+    // `Path::parent` returns `Some("")` for a bare filename like `FOO.md`;
+    // fall back to CWD so image-path resolution doesn't break.
     let base_path = args
         .input
         .parent()
@@ -40,7 +38,6 @@ fn run(args: &Args) -> Result<(), SieveError> {
     let output_path = args.output_path();
 
     if args.html_only {
-        // Output intermediate HTML
         let html_source = convert_markdown_to_html(&input_content, &base_path)?;
 
         if args.verbose {
@@ -55,18 +52,10 @@ fn run(args: &Args) -> Result<(), SieveError> {
         eprintln!("Created: {}", output_path.display());
     } else {
         if args.verbose {
-            if args.native {
-                eprintln!("Generating PDF via native renderer (krilla+parley)...");
-            } else {
-                eprintln!("Generating PDF via WeasyPrint...");
-            }
+            eprintln!("Generating PDF...");
         }
 
-        let pdf_data = if args.native {
-            convert_markdown_to_pdf_native(&input_content, &base_path)?
-        } else {
-            convert_markdown_to_pdf(&input_content, &base_path)?
-        };
+        let pdf_data = convert_markdown_to_pdf(&input_content, &base_path)?;
 
         if args.verbose {
             eprintln!("Writing PDF: {}", output_path.display());

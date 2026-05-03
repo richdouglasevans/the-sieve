@@ -1,3 +1,6 @@
+[workspace]
+members = ["app"]
+
 [package]
 name = "the-sieve"
 version = "0.2.0"

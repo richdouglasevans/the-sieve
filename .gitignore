@@ -3,3 +3,6 @@
 .the_sieve_temp.*
 *.swp
 .claude/settings.local.json
+
+# Tauri-generated schemas (regenerated on build)
+/app/gen/

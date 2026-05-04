@@ -41,8 +41,10 @@ jobs:
           - target: aarch64-apple-darwin
             runner: macos-latest
             os: unix
+          # Cross-compile from arm64; macos-13 (Intel) runners are deprecated
+          # and starved of capacity, so jobs there can hang for hours.
           - target: x86_64-apple-darwin
-            runner: macos-13
+            runner: macos-latest
             os: unix
           - target: x86_64-unknown-linux-gnu
             runner: ubuntu-latest

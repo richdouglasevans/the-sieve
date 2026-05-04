@@ -1,6 +1,6 @@
 [package]
 name = "the-sieve-app"
-version = "0.3.0"
+version = "1.0.0"
 edition = "2021"
 description = "Desktop app that watches a markdown file and rebuilds the PDF on every save."
 license = "MIT"

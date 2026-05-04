@@ -59,77 +59,12 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
+      # One cache shared by both the CLI build and the app build below — the
+      # app crate depends on `the-sieve` via path, so they share most artifacts.
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
           key: ${{ matrix.target }}
-
-      - name: Build
-        run: cargo build --release --target ${{ matrix.target }} --locked
-
-      - name: Stage binary (Unix)
-        if: matrix.os == 'unix'
-        shell: bash
-        run: |
-          set -euo pipefail
-          bin="the-sieve-${{ matrix.target }}"
-          cp "target/${{ matrix.target }}/release/the-sieve" "$bin"
-          shasum -a 256 "$bin" > "$bin.sha256"
-          {
-            echo "BIN=$bin"
-            echo "BIN_SHA=$bin.sha256"
-          } >> "$GITHUB_ENV"
-
-      - name: Stage binary (Windows)
-        if: matrix.os == 'windows'
-        shell: pwsh
-        run: |
-          $bin = "the-sieve-${{ matrix.target }}.exe"
-          Copy-Item "target/${{ matrix.target }}/release/the-sieve.exe" $bin
-          (Get-FileHash $bin -Algorithm SHA256).Hash.ToLower() + "  $bin" | Out-File -Encoding ascii "$bin.sha256"
-          "BIN=$bin" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
-          "BIN_SHA=$bin.sha256" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
-
-      - name: Upload to release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ inputs.tag || github.ref_name }}
-          files: |
-            ${{ env.BIN }}
-            ${{ env.BIN_SHA }}
-          fail_on_unmatched_files: true
-
-  app:
-    needs: create-release
-    name: app (${{ matrix.target }})
-    runs-on: ${{ matrix.runner }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - target: aarch64-apple-darwin
-            runner: macos-latest
-          - target: x86_64-apple-darwin
-            runner: macos-13
-          - target: x86_64-unknown-linux-gnu
-            runner: ubuntu-latest
-          - target: x86_64-pc-windows-msvc
-            runner: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.tag || github.ref }}
-
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: ${{ matrix.target }}
-
-      - name: Cache cargo
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: app-${{ matrix.target }}
-          workspaces: ". -> target"
 
       - name: Install Linux WebKit and packaging deps
         if: matrix.runner == 'ubuntu-latest'
@@ -145,20 +80,51 @@ jobs:
             patchelf \
             file
 
-      - name: Install cargo-tauri-cli
-        run: cargo install tauri-cli --version "^2" --locked
+      # Prebuilt binary; ~10s vs ~3min for `cargo install tauri-cli`.
+      - name: Install cargo-tauri (prebuilt)
+        uses: taiki-e/install-action@v2
+        with:
+          tool: tauri-cli@^2
 
+      - name: Build CLI
+        run: cargo build --release --target ${{ matrix.target }} --locked -p the-sieve
+
+      - name: Stage CLI binary (Unix)
+        if: matrix.os == 'unix'
+        shell: bash
+        run: |
+          set -euo pipefail
+          bin="the-sieve-${{ matrix.target }}"
+          cp "target/${{ matrix.target }}/release/the-sieve" "$bin"
+          shasum -a 256 "$bin" > "$bin.sha256"
+          {
+            echo "BIN=$bin"
+            echo "BIN_SHA=$bin.sha256"
+          } >> "$GITHUB_ENV"
+
+      - name: Stage CLI binary (Windows)
+        if: matrix.os == 'windows'
+        shell: pwsh
+        run: |
+          $bin = "the-sieve-${{ matrix.target }}.exe"
+          Copy-Item "target/${{ matrix.target }}/release/the-sieve.exe" $bin
+          (Get-FileHash $bin -Algorithm SHA256).Hash.ToLower() + "  $bin" | Out-File -Encoding ascii "$bin.sha256"
+          "BIN=$bin" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          "BIN_SHA=$bin.sha256" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+
+      # The app build reuses every dep already compiled above (the-sieve,
+      # krilla, parley, fonts, …) thanks to the shared target dir.
       - name: Build app bundle
         working-directory: app
         run: cargo tauri build --target ${{ matrix.target }}
 
-      - name: Upload app bundles
+      - name: Upload all artifacts
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.tag || github.ref_name }}
-          # tauri-cli puts platform-specific bundles under bundle/<format>/.
-          # Listing them all here; softprops uploads whatever exists.
           files: |
+            ${{ env.BIN }}
+            ${{ env.BIN_SHA }}
             target/${{ matrix.target }}/release/bundle/dmg/*.dmg
             target/${{ matrix.target }}/release/bundle/macos/*.app.tar.gz
             target/${{ matrix.target }}/release/bundle/appimage/*.AppImage

@@ -44,6 +44,8 @@ the-sieve adventure.md --html-only     # emit intermediate HTML for debugging
 
 ## Desktop app
 
+![The Sieve desktop app watching a markdown file](docs/screenshots/desktop-app.png)
+
 Open the app, click **Pick file…**, and select a markdown file. Every time you save the file the app rebuilds the PDF next to it (200 ms debounce so editor double-saves don't double-rebuild). The log panel shows each rebuild with timestamp and duration.
 
 ## How it works

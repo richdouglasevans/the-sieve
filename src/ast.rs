@@ -69,6 +69,8 @@ pub enum Inline {
 #[derive(Debug, Clone)]
 pub struct ListItem {
     pub content: Vec<Element>,
+    /// None = ordinary list item; Some(false) = unchecked task; Some(true) = checked task.
+    pub task: Option<bool>,
 }
 
 #[derive(Debug, Clone)]

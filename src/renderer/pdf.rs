@@ -1376,7 +1376,7 @@ fn lay_out_element(
             let item_indent = indent + INDENT_STEP;
             let item_available = content_width - item_indent;
             for (i, item) in items.iter().enumerate() {
-                let marker_str = list_marker(*ordered, i, indent);
+                let marker_str = list_marker(*ordered, i, indent, item.task);
                 let mut first_block = true;
                 for child in &item.content {
                     let len_before = out.len();
@@ -2007,8 +2007,10 @@ fn build_row_cells(
     row
 }
 
-fn list_marker(ordered: bool, index: usize, indent: f32) -> String {
-    if ordered {
+fn list_marker(ordered: bool, index: usize, indent: f32, task: Option<bool>) -> String {
+    if let Some(checked) = task {
+        if checked { "[x]".to_string() } else { "[ ]".to_string() }
+    } else if ordered {
         format!("{}.", index + 1)
     } else if indent == 0.0 {
         "•".to_string()

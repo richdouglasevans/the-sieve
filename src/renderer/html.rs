@@ -374,7 +374,13 @@ fn render_list(ordered: bool, items: &[ListItem]) -> String {
     let mut output = format!("<{}>\n", tag);
 
     for item in items {
-        output.push_str("<li>");
+        match item.task {
+            Some(true) => output
+                .push_str("<li style=\"list-style:none\"><input type=\"checkbox\" checked disabled> "),
+            Some(false) => output
+                .push_str("<li style=\"list-style:none\"><input type=\"checkbox\" disabled> "),
+            None => output.push_str("<li>"),
+        }
         for (i, element) in item.content.iter().enumerate() {
             match element {
                 Element::Paragraph(inlines) => {

@@ -45,6 +45,7 @@ struct ListState {
     ordered: bool,
     items: Vec<ListItem>,
     current_item: Vec<Element>,
+    current_task: Option<bool>,
 }
 
 struct TableState {
@@ -142,7 +143,13 @@ fn process_event(event: Event, document: &mut Document, state: &mut ParserState)
             document.push(Element::ThematicBreak);
         }
 
-        Event::FootnoteReference(_) | Event::TaskListMarker(_) => {
+        Event::TaskListMarker(checked) => {
+            if let Some(list) = state.list_stack.last_mut() {
+                list.current_task = Some(checked);
+            }
+        }
+
+        Event::FootnoteReference(_) => {
             // Not yet supported
         }
     }
@@ -189,6 +196,7 @@ fn process_start_tag(tag: Tag, state: &mut ParserState) {
                 ordered: start.is_some(),
                 items: Vec::new(),
                 current_item: Vec::new(),
+                current_task: None,
             });
         }
         Tag::Item => {
@@ -315,7 +323,8 @@ fn process_end_tag(tag: TagEnd, document: &mut Document, state: &mut ParserState
                     list.current_item.push(Element::Paragraph(inlines));
                 }
                 let content = std::mem::take(&mut list.current_item);
-                list.items.push(ListItem { content });
+                let task = list.current_task.take();
+                list.items.push(ListItem { content, task });
             }
         }
         TagEnd::Table => {

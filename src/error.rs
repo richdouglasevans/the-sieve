@@ -26,6 +26,12 @@ pub enum SieveError {
 
     #[error("Image not found: {0}")]
     ImageNotFound(PathBuf),
+
+    #[error("no input provided.\n\nUsage:\n  the-sieve <INPUT>            read from file\n  cat file.md | the-sieve      read from stdin\n\nFor more information, try '--help'.")]
+    NoInput,
+
+    #[error("Failed to write to stdout: {0}")]
+    WriteStdout(std::io::Error),
 }
 
 pub type Result<T> = std::result::Result<T, SieveError>;
